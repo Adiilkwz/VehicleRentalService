@@ -1,7 +1,7 @@
 package com.rental.person2.factory;
 
 public class VehicleFactory {
-    public Vehicle createVehicle(String vehicleType){
+    public static Vehicle createVehicle(String vehicleType){
         return switch (vehicleType.toUpperCase()) {
             case "CAR" -> new Car();
             case "BIKE" -> new Bike();
