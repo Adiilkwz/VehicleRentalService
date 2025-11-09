@@ -1,21 +1,28 @@
 package com.rental.person2.factory;
 
 public class Bike implements Vehicle{
-    double bike_base_price = 15.00;
-    String bike_description = "Two-Wheeled Commuter Bike";
+    double bikeBasePriceHourly = 8.00;
+    String bikeDescription = "Two-Wheeled Commuter Bike";
+    int minRentalMinutes = 30;
+    int maxRentalMinutes = 1440;
 
     @Override
-    public double GetBasePrice(){
-        return bike_base_price;
+    public double getBasePrice(){
+        return bikeBasePriceHourly;
     }
 
     @Override
-    public String GetDescription(){
-        return bike_description;
+    public String getDescription(){
+        return bikeDescription;
     }
 
     @Override
-    public String GetTypeIdentifier(){
-        return "Bike";
+    public int getMinMinutes(){
+        return minRentalMinutes;
+    }
+
+    @Override
+    public int getMaxMinutes(){
+        return maxRentalMinutes;
     }
 }

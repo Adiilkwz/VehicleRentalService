@@ -1,21 +1,28 @@
 package com.rental.person2.factory;
 
 public class Car implements Vehicle{
-    double car_base_price = 45.00;
-    String car_description = "Standard Sedan";
+    double carBasePriceHourly = 45.00;
+    String carDescription = "Standard Sedan";
+    int minRentalMinutes = 240;
+    int maxRentalMinutes = 4320;
 
     @Override
-    public double GetBasePrice(){
-        return car_base_price;
+    public double getBasePrice(){
+        return carBasePriceHourly;
     }
 
     @Override
-    public String GetDescription(){
-        return car_description;
+    public String getDescription(){
+        return carDescription;
     }
 
     @Override
-    public String GetTypeIdentifier(){
-        return "Car";
+    public int getMinMinutes(){
+        return minRentalMinutes;
+    }
+
+    @Override
+    public int getMaxMinutes(){
+        return maxRentalMinutes;
     }
 }
