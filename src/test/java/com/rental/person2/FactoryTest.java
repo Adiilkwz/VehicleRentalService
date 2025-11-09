@@ -9,7 +9,7 @@ public class FactoryTest {
     @Test
     void testCreateCarSuccess() {
         Vehicle car = VehicleFactory.createVehicle("CAR");
-        assertTrue(car instanceof Car, "Factory should return a Car instance.");
+        assertInstanceOf(Car.class, car, "Factory should return a Car instance.");
         assertEquals("Standard Sedan", car.getDescription(), "Car description is incorrect.");
         assertEquals(45.00, car.getBasePrice(), 0.001, "Car base price is incorrect.");
     }
@@ -17,13 +17,13 @@ public class FactoryTest {
     @Test
     void testCreateBikeSuccess() {
         Vehicle bike = VehicleFactory.createVehicle("BIKE");
-        assertTrue(bike instanceof Bike, "Factory should return a Bike instance.");
+        assertInstanceOf(Bike.class, bike, "Factory should return a Bike instance.");
     }
 
     @Test
     void testCreateElectricScooterSuccess() {
         Vehicle scooter = VehicleFactory.createVehicle("SCOOTER");
-        assertTrue(scooter instanceof ElectricScooter, "Factory should return an ElectricScooter instance.");
+        assertInstanceOf(ElectricScooter.class, scooter, "Factory should return an ElectricScooter instance.");
     }
 
     @Test
