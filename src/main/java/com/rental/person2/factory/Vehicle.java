@@ -1,4 +1,7 @@
 package com.rental.person2.factory;
 
-public class Vehicle {
+public interface Vehicle {
+    double GetBasePrice();
+    String GetDescription();
+    String GetTypeIdentifier();
 }
