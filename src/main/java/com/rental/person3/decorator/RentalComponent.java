@@ -1,4 +1,6 @@
 package com.rental.person3.decorator;
 
-public class RentalComponent {
+public interface RentalComponent {
+    double getCost();
+    String getDescription();
 }
