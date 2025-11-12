@@ -1,4 +1,5 @@
 package com.rental.person1.observer;
 
-public class Observer {
+public interface Observer {
+    void update(String eventType, String message);
 }
