@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     margin: auto;
     overflow: hidden;
     padding: 20px 0;
@@ -96,6 +96,17 @@ header a:hover {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+.form-card {
+    max-width: 500px;             /* ограничивает ширину формы */
+    margin: 0 auto;               /* центрирует форму */
+    background: #F8F9FA;          /* светлый фон */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: left;             /* чтобы текст и поля были выровнены по левому краю */
+}
+
 
 .btn {
     display: inline-block;

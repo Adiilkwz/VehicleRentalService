@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Your Vehicle - Vehicle Rental Service</title>
+    <title>Book [[${vehicleType}]]</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
+
 <header>
     <div class="container">
         <h1>Vehicle Rental Service</h1>
@@ -20,70 +20,83 @@
     </div>
 </header>
 
-<div class="container main-content">
-    <h2 th:text="'Book Your ' + ${vehicleType}">Book Your Vehicle</h2>
+<div class="container">
+    <div class="main-content">
+        <!-- Wrap the form in the centering container form-card -->
+        <div class="form-card">
+            <h2>Order Placement</h2>
 
-    <form th:action="@{/confirm-booking}" th:object="${rentalRequest}" method="post" id="bookingForm">
+            <!-- Form for RentalRequestDTO, including nested UserDTO -->
+            <form th:action="@{/confirm-booking}" th:object="${rentalRequest}" method="post">
 
-        <input type="hidden" id="vehicleType" th:field="*{vehicleType}" />
+                <!-- 1. Rental Details -->
+                <h3>1. Rental Details</h3>
+                <div class="form-group">
+                    <label for="vehicleType">Vehicle Type:</label>
+                    <input type="text" id="vehicleType" th:field="*{vehicleType}" class="form-control" readonly="readonly">
+                </div>
 
-        <h3>Rental Details</h3>
-        <div class="form-group">
-            <label for="durationMinutes">Rental Duration (minutes):</label>
-            <input type="number" id="durationMinutes" th:field="*{durationMinutes}" class="form-control" min="30" max="1440" value="60" required>
-        </div>
+                <div class="form-group">
+                    <label for="durationMinutes">Rental Duration (minutes):</label>
+                    <input type="number" id="durationMinutes" th:field="*{durationMinutes}" class="form-control" placeholder="e.g., 60" min="30" required>
+                </div>
 
-        <h3>Extra Options (Decorator)</h3>
-        <div class="form-group">
-            <input type="checkbox" id="addGps" th:field="*{addGps}">
-            <label for="addGps">Add GPS Navigation (+$5.00)</label>
-        </div>
-        <div class="form-group">
-            <input type="checkbox" id="addInsurance" th:field="*{addInsurance}">
-            <label for="addInsurance">Add Full Insurance (+$8.50)</label>
-        </div>
+                <!-- 2. Extra Options (Decorator) -->
+                <h3>2. Extra Options</h3>
 
-        <h3>Your Details</h3>
-        <div class="form-group">
-            <label for="userName">Your Name:</label>
-            <input type="text" id="userName" th:field="*{user.name}" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="userEmail">Your Email:</label>
-            <input type="email" id="userEmail" th:field="*{user.email}" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="userPhone">Phone Number:</label>
-            <input type="tel" id="userPhone" th:field="*{user.phoneNumber}" class="form-control">
-        </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="addGps" th:field="*{addGps}">
+                    <label for="addGps">Add GPS Navigation (+$5.00)</label>
+                </div>
 
-        <h3>Payment Information (Bridge)</h3>
-        <div class="form-group">
-            <label for="paymentToken">Payment Method:</label>
-            <select id="paymentToken" th:field="*{paymentToken}" class="form-control" required>
-                <option value="">-- Select Payment --</option>
-                <option value="Stripe">Stripe</option>
-                <option value="PayPal">PayPal</option>
-            </select>
-        </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="addInsurance" th:field="*{addInsurance}">
+                    <label for="addInsurance">Add Full Insurance (+$8.50)</label>
+                </div>
 
+                <!-- 3. Your Contact Details (User Details) -->
+                <h3>3. Your Contact Details</h3>
+                <div class="form-group">
+                    <label for="userName">Your Name:</label>
+                    <input type="text" id="userName" th:field="*{user.name}" class="form-control" placeholder="Yerassyl Kuanyshov" required>
+                </div>
 
-        <div class="text-center total-cost">
-            Estimated Total: $<span id="estimatedCost">0.00</span>
-            <input type="hidden" id="finalCostHidden" name="finalCostHidden"/>
-        </div>
+                <div class="form-group">
+                    <label for="userEmail">Your Email:</label>
+                    <input type="email" id="userEmail" th:field="*{user.email}" class="form-control" placeholder="yerassyl.kuanyshov@example.com" required>
+                </div>
 
-        <div class="text-center" style="margin-top: 25px;">
-            <button type="submit" class="btn">Confirm Booking</button>
-            <a th:href="@{/browse}" class="btn btn-secondary">Cancel</a>
+                <div class="form-group">
+                    <label for="userPhone">Phone Number:</label>
+                    <input type="tel" id="userPhone" th:field="*{user.phoneNumber}" class="form-control" placeholder="+7 777 512 2141" required>
+                </div>
+
+                <!-- 4. Payment -->
+                <h3>4. Payment</h3>
+                <div class="form-group">
+                    <label for="paymentToken">Payment Method:</label>
+                    <select id="paymentToken" th:field="*{paymentToken}" class="form-control" required>
+                        <option value="">Select Method</option>
+                        <option value="Freedom">Freedom</option>
+                        <option value="Kaspi">Kaspi</option>
+                        <option value="HalykBank">HalykBank</option>
+                    </select>
+                </div>
+
+                <div class="text-center" style="margin-top: 30px;">
+                    <button type="submit" class="btn">Confirm Booking</button>
+                </div>
+
+            </form>
         </div>
-    </form>
+    </div>
 </div>
 
 <footer>
-    <p>&copy; 2023 Vehicle Rental Service</p>
+    <div class="container">
+        <p>&copy; 2025 Vehicle Rental. All rights reserved.</p>
+    </div>
 </footer>
 
-<script th:src="@{/js/rental-scripts.js}"></script>
 </body>
 </html>
