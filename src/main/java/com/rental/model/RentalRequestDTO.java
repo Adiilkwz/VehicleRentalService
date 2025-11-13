@@ -1,18 +1,16 @@
 package com.rental.model;
 
-import java.util.List;
-
 public class RentalRequestDTO {
-
-    public RentalRequestDTO() {
-    }
-
     private String vehicleType;
     private int durationMinutes;
     private boolean addGps;
     private boolean addInsurance;
-    private UserDTO user;
     private String paymentToken;
+    private UserDTO user;
+
+    public RentalRequestDTO() {
+        this.user = new UserDTO();
+    }
 
     public String getVehicleType() {
         return vehicleType;
@@ -46,19 +44,19 @@ public class RentalRequestDTO {
         this.addInsurance = addInsurance;
     }
 
-    public UserDTO getUser() {
-        return user;
-    }
-
-    public void setUser(UserDTO user) {
-        this.user = user;
-    }
-
     public String getPaymentToken() {
         return paymentToken;
     }
 
     public void setPaymentToken(String paymentToken) {
         this.paymentToken = paymentToken;
+    }
+
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
     }
 }

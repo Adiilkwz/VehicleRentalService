@@ -1,10 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Vehicle - Vehicle Rental Service</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
+<header>
+    <div class="container">
+        <h1>Vehicle Rental Service</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/browse}">Browse Vehicles</a></li>
+                <li><a th:href="@{/booking}">My Bookings</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
+<div class="container main-content">
+    <h2 th:text="'Book Your ' + ${vehicleType}">Book Your Vehicle</h2>
+
+    <form th:action="@{/confirm-booking}" th:object="${rentalRequest}" method="post" id="bookingForm">
+
+        <input type="hidden" id="vehicleType" th:field="*{vehicleType}" />
+
+        <h3>Rental Details</h3>
+        <div class="form-group">
+            <label for="durationMinutes">Rental Duration (minutes):</label>
+            <input type="number" id="durationMinutes" th:field="*{durationMinutes}" class="form-control" min="30" max="1440" value="60" required>
+        </div>
+
+        <h3>Extra Options (Decorator)</h3>
+        <div class="form-group">
+            <input type="checkbox" id="addGps" th:field="*{addGps}">
+            <label for="addGps">Add GPS Navigation (+$5.00)</label>
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="addInsurance" th:field="*{addInsurance}">
+            <label for="addInsurance">Add Full Insurance (+$8.50)</label>
+        </div>
+
+        <h3>Your Details</h3>
+        <div class="form-group">
+            <label for="userName">Your Name:</label>
+            <input type="text" id="userName" th:field="*{user.name}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="userEmail">Your Email:</label>
+            <input type="email" id="userEmail" th:field="*{user.email}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="userPhone">Phone Number:</label>
+            <input type="tel" id="userPhone" th:field="*{user.phoneNumber}" class="form-control">
+        </div>
+
+        <h3>Payment Information (Bridge)</h3>
+        <div class="form-group">
+            <label for="paymentToken">Payment Method:</label>
+            <select id="paymentToken" th:field="*{paymentToken}" class="form-control" required>
+                <option value="">-- Select Payment --</option>
+                <option value="Stripe">Stripe</option>
+                <option value="PayPal">PayPal</option>
+            </select>
+        </div>
+
+
+        <div class="text-center total-cost">
+            Estimated Total: $<span id="estimatedCost">0.00</span>
+            <input type="hidden" id="finalCostHidden" name="finalCostHidden"/>
+        </div>
+
+        <div class="text-center" style="margin-top: 25px;">
+            <button type="submit" class="btn">Confirm Booking</button>
+            <a th:href="@{/browse}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<footer>
+    <p>&copy; 2023 Vehicle Rental Service</p>
+</footer>
+
+<script th:src="@{/js/rental-scripts.js}"></script>
 </body>
 </html>

@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Vehicles - Vehicle Rental Service</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
+<header>
+    <div class="container">
+        <h1>Vehicle Rental Service</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/browse}">Browse Vehicles</a></li>
+                <li><a th:href="@{/booking}">My Bookings</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
+<div class="container main-content">
+    <h2>Our Fleet</h2>
+    <p class="text-center">Choose the perfect ride for your needs!</p>
+
+    <div class="vehicle-grid">
+
+        <!-- Car -->
+        <div class="vehicle-card">
+            <img th:src="@{/images/car.png}" alt="Car">
+            <h3>Car (Машина)</h3>
+            <p>Perfect for city trips or comfortable long drives.</p>
+            <a th:href="@{/booking(type='Car')}" class="btn">Rent Car</a>
+        </div>
+
+        <!-- Bike -->
+        <div class="vehicle-card">
+            <img th:src="@{/images/bike.png}" alt="Bike">
+            <h3>Bike (Велосипед)</h3>
+            <p>Eco-friendly, healthy, and fun for short distances.</p>
+            <a th:href="@{/booking(type='Bike')}" class="btn">Rent Bike</a>
+        </div>
+
+        <!-- Electric Scooter -->
+        <div class="vehicle-card">
+            <img th:src="@{/images/electric-scooter.png}" alt="Electric Scooter">
+            <h3>Electric Scooter (Электросамокат)</h3>
+            <p>Nimble and fast for urban exploration.</p>
+            <a th:href="@{/booking(type='Electric Scooter')}" class="btn">Rent Electric Scooter</a>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2023 Vehicle Rental Service</p>
+</footer>
 </body>
 </html>

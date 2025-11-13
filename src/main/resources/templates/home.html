@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Vehicle Rental Service</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
+<header>
+  <div class="container">
+    <h1>Vehicle Rental Service</h1>
+    <nav>
+      <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/browse}">Browse Vehicles</a></li>
+        <li><a th:href="@{/booking}">My Bookings</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
+<div class="container main-content text-center">
+  <h2>Rent the perfect vehicle for your journey!</h2>
+  <p>Explore our selection of cars, bikes, and electric scooters.</p>
+  <img th:src="@{/images/hero-rental.png}" alt="Rental Vehicles" style="max-width: 80%; height: auto; margin: 20px 0;">
+  <p>Start your adventure today with easy booking and transparent pricing.</p>
+  <a th:href="@{/browse}" class="btn">Browse Vehicles</a>
+</div>
+
+<footer>
+  <p>&copy; 2023 Vehicle Rental Service</p>
+</footer>
 </body>
 </html>
