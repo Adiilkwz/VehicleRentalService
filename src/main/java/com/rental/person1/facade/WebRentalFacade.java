@@ -14,7 +14,9 @@ import com.rental.person3.decorator.BasicRental;
 import com.rental.person3.decorator.GPSOption;
 import com.rental.person3.decorator.InsuranceOption;
 import com.rental.person3.decorator.RentalComponent;
+import org.springframework.stereotype.Service;
 
+@Service
 public class WebRentalFacade {
 
     private final WebNotificationService notificationService;

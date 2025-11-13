@@ -1,8 +1,11 @@
 package com.rental.person1.observer;
 
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class WebNotificationService implements Subject {
 
     private final List<Observer> observers = new ArrayList<>();
