@@ -67,7 +67,7 @@ class FacadeTest {
 
     @Test
     void testValidationFailureTooShort() {
-        request.setDurationMinutes(10); // Минимум для машины 240
+        request.setDurationMinutes(10);
 
         BookingReceipt receipt = facade.completeBooking(request);
 

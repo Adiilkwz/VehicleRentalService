@@ -22,14 +22,11 @@
 
 <div class="container">
     <div class="main-content">
-        <!-- Wrap the form in the centering container form-card -->
         <div class="form-card">
             <h2>Order Placement</h2>
 
-            <!-- Form for RentalRequestDTO, including nested UserDTO -->
             <form th:action="@{/confirm-booking}" th:object="${rentalRequest}" method="post">
 
-                <!-- 1. Rental Details -->
                 <h3>1. Rental Details</h3>
                 <div class="form-group">
                     <label for="vehicleType">Vehicle Type:</label>
@@ -41,7 +38,6 @@
                     <input type="number" id="durationMinutes" th:field="*{durationMinutes}" class="form-control" placeholder="e.g., 60" min="15" required>
                 </div>
 
-                <!-- 2. Extra Options (Decorator) -->
                 <h3>2. Extra Options</h3>
 
                 <div class="checkbox-group">
@@ -54,7 +50,6 @@
                     <label for="addInsurance">Add Full Insurance (+$8.50)</label>
                 </div>
 
-                <!-- 3. Your Contact Details (User Details) -->
                 <h3>3. Your Contact Details</h3>
                 <div class="form-group">
                     <label for="userName">Your Name:</label>
@@ -71,7 +66,6 @@
                     <input type="tel" id="userPhone" th:field="*{user.phoneNumber}" class="form-control" placeholder="+7 777 512 2141" required>
                 </div>
 
-                <!-- 4. Payment -->
                 <h3>4. Payment</h3>
                 <div class="form-group">
                     <label for="paymentToken">Payment Method:</label>
