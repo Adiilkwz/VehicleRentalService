@@ -1,7 +1,7 @@
 package com.rental.person1.observer;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +9,13 @@ import java.util.List;
 public class WebNotificationService implements Subject {
 
     private final List<Observer> observers = new ArrayList<>();
+
+    @PostConstruct
+    public void initObservers() {
+        // Automatically attach listeners on startup
+        attach(new UserNotificationListener());
+        attach(new EmailSubscriber("admin@rental.com"));
+    }
 
     @Override
     public void attach(Observer observer) {
@@ -33,6 +40,8 @@ public class WebNotificationService implements Subject {
             observer.update(eventType, message);
         }
     }
+
     public void notifyObservers(String bookingSuccess, String notificationMessage) {
+        notifySubscribers(bookingSuccess, notificationMessage);
     }
 }

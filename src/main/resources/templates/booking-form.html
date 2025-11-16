@@ -38,7 +38,7 @@
 
                 <div class="form-group">
                     <label for="durationMinutes">Rental Duration (minutes):</label>
-                    <input type="number" id="durationMinutes" th:field="*{durationMinutes}" class="form-control" placeholder="e.g., 60" min="30" required>
+                    <input type="number" id="durationMinutes" th:field="*{durationMinutes}" class="form-control" placeholder="e.g., 60" min="15" required>
                 </div>
 
                 <!-- 2. Extra Options (Decorator) -->
@@ -76,10 +76,9 @@
                 <div class="form-group">
                     <label for="paymentToken">Payment Method:</label>
                     <select id="paymentToken" th:field="*{paymentToken}" class="form-control" required>
-                        <option value="">Select Method</option>
-                        <option value="Freedom">Freedom</option>
-                        <option value="Kaspi">Kaspi</option>
-                        <option value="HalykBank">HalykBank</option>
+                        <option value="">Выберите метод</option>
+                        <option value="Stripe">Stripe</option>
+                        <option value="PayPal">PayPal</option>
                     </select>
                 </div>
 
